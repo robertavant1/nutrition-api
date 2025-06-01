@@ -17,10 +17,12 @@ Including another URLconf
 from api.views import FoodViewSet, SearchFoodAPIView, MyFoodEndpoint
 from rest_framework import routers
 from django.urls import include, path
+from django.contrib import admin
 
 router = routers.DefaultRouter()
 router.register(r'food', FoodViewSet)
 urlpatterns = [
+    path('admin/', admin.site.urls),
     path('', include(router.urls)),  
     path('search-food/', SearchFoodAPIView.as_view(), name="search_food"),  
     path("my-food/", MyFoodEndpoint.as_view(), name='user_food'),

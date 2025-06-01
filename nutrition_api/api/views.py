@@ -54,8 +54,8 @@ class SearchFoodAPIView(APIView):
 
 class MyFoodEndpoint(APIView):
     def get(self,request):
-        user = request.user
-        food_log = FoodLog.objects.filter(user=user)
+        #user = request.user
+        food_log = FoodLog.objects.filter()
         serializer = FoodLogSerializer(food_log, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
